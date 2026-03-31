@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ken Ayson | Technical Support Portfolio</title>
+  <meta
+    name="description"
+    content="Technical Support and Help Desk portfolio for Ken Ayson, featuring certifications in hardware, networking, databases, and cloud systems."
+  >
+  <style>
+    :root {
+      --bg: #f3efe6;
+      --surface: rgba(255, 251, 245, 0.88);
+      --surface-strong: #fffaf2;
+      --ink: #1d2630;
+      --muted: #56606b;
+      --line: rgba(29, 38, 48, 0.12);
+      --accent: #bf4d28;
+      --accent-dark: #8d3417;
+      --accent-soft: #f2c39a;
+      --teal: #1e6c6b;
+      --shadow: 0 18px 50px rgba(35, 36, 38, 0.14);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+      --max: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(191, 77, 40, 0.18), transparent 32%),
+        radial-gradient(circle at top right, rgba(30, 108, 107, 0.18), transparent 28%),
+        linear-gradient(180deg, #f8f4ed 0%, var(--bg) 100%);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .shell {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+      background: rgba(248, 244, 237, 0.84);
+      border-bottom: 1px solid rgba(29, 38, 48, 0.08);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible {
+      background: rgba(30, 108, 107, 0.1);
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    main {
+      padding: 2rem 0 4rem;
+    }
+
+    section {
+      margin-top: 1.6rem;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(191, 77, 40, 0.92), rgba(141, 52, 23, 0.9)),
+        linear-gradient(180deg, #000, #000);
+      color: #fff7ef;
+      box-shadow: var(--shadow);
+      padding: clamp(1.6rem, 4vw, 3rem);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -6rem -6rem auto;
+      width: 18rem;
+      height: 18rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 248, 235, 0.34), transparent 64%);
+      animation: float 9s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(270px, 0.9fr);
+      gap: 1.5rem;
+      align-items: end;
+      margin-top: 1.2rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      margin-top: 0.9rem;
+      max-width: 11ch;
+    }
+
+    .hero p {
+      max-width: 62ch;
+      margin: 1rem 0 0;
+      color: rgba(255, 247, 239, 0.88);
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .button,
+    .button-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 48px;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
+    }
+
+    .button {
+      background: #fff8ee;
+      color: var(--accent-dark);
+    }
+
+    .button:hover,
+    .button:focus-visible,
+    .button-ghost:hover,
+    .button-ghost:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .button-ghost {
+      color: #fff6ea;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-panel,
+    .panel {
+      background: rgba(255, 250, 242, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 24px;
+      padding: 1.25rem;
+    }
+
+    .hero-panel h2 {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: #fffdf8;
+    }
+
+    .role-list,
+    .support-list,
+    .resume-points {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .role-list li,
+    .support-list li,
+    .resume-points li {
+      padding: 0.65rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .role-list li:first-child,
+    .support-list li:first-child,
+    .resume-points li:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.4rem;
+    }
+
+    .stat {
+      background: var(--surface);
+      border: 1px solid rgba(29, 38, 48, 0.07);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow);
+      padding: 1.1rem;
+      animation: rise 650ms ease both;
+    }
+
+    .stat:nth-child(2) { animation-delay: 80ms; }
+    .stat:nth-child(3) { animation-delay: 160ms; }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.85rem;
+      color: var(--accent-dark);
+      line-height: 1;
+    }
+
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 56ch;
+      color: var(--muted);
+    }
+
+    .section-kicker {
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .card,
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow);
+      padding: 1.2rem;
+    }
+
+    .card h3,
+    .contact-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p,
+    .contact-card p,
+    .panel p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+
+    .chip {
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(30, 108, 107, 0.08);
+      color: var(--teal);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .cert-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      min-height: 100%;
+    }
+
+    .cert-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .cert-badge {
+      flex: 0 0 auto;
+      width: 2.7rem;
+      height: 2.7rem;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: #fff7ef;
+      background: linear-gradient(135deg, var(--teal), #144f54);
+    }
+
+    .cert-card .button {
+      width: 100%;
+      margin-top: auto;
+      background: linear-gradient(135deg, rgba(30, 108, 107, 0.94), rgba(20, 79, 84, 0.98));
+      color: #f5fffd;
+    }
+
+    .resume {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .resume-card {
+      background: linear-gradient(135deg, #fffaf2, #f7efe4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+    }
+
+    .resume-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+    }
+
+    .resume-actions .button {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #fff7ef;
+    }
+
+    .resume-actions .button-ghost {
+      background: rgba(191, 77, 40, 0.08);
+      border-color: rgba(191, 77, 40, 0.18);
+      color: var(--accent-dark);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .contact-card span {
+      display: inline-block;
+      margin-bottom: 0.45rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .resume,
+      .card-grid,
+      .contact-grid,
+      .grid-two,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero,
+      .resume-card,
+      .card,
+      .contact-card,
+      .stat {
+        padding: 1.05rem;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 13vw, 3.2rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top">Ken Ayson</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#roles">Roles</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="shell">
+      <section class="hero" aria-labelledby="hero-title">
+        <span class="eyebrow">Technical Support Portfolio</span>
+        <div class="hero-grid">
+          <div>
+            <h1 id="hero-title">Ken Ayson</h1>
+            <p>
+              Entry-level Technical Support and Help Desk candidate focused on practical troubleshooting,
+              user assistance, hardware basics, network fundamentals, and dependable day-to-day support.
+              This portfolio highlights certification-backed readiness for front-line support environments.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="#certifications">View Certifications</a>
+              <a class="button-ghost" href="assets/docs/Ayson_Resume.pdf" target="_blank" rel="noopener">Open Resume</a>
+            </div>
+          </div>
+
+          <aside class="hero-panel" aria-label="Focus areas">
+            <h2>Support Focus</h2>
+            <ul class="role-list">
+              <li>Technical Support Specialist</li>
+              <li>IT Help Desk Support</li>
+              <li>Service Desk / Desktop Support</li>
+              <li>Entry-Level IT Operations</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Highlights">
+        <article class="stat">
+          <strong>4</strong>
+          <span>Certifications included in this portfolio</span>
+        </article>
+        <article class="stat">
+          <strong>24/7</strong>
+          <span>Support mindset built around responsiveness, patience, and clear user guidance</span>
+        </article>
+        <article class="stat">
+          <strong>Help Desk</strong>
+          <span>Role targeting aligned with hardware, networking, databases, and support operations</span>
+        </article>
+      </section>
+
+      <section id="roles">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Role Fit</div>
+            <h2>Built for technical support and general help desk work</h2>
+          </div>
+          <p>
+            The portfolio is positioned for teams that need someone who can assist users, document issues,
+            troubleshoot common technical problems, and support smooth day-to-day IT operations.
+          </p>
+        </div>
+
+        <div class="grid-two">
+          <article class="card">
+            <h3>What Ken can contribute</h3>
+            <div class="chip-row">
+              <span class="chip">Incident triage</span>
+              <span class="chip">User assistance</span>
+              <span class="chip">Issue documentation</span>
+              <span class="chip">Basic escalation</span>
+              <span class="chip">Troubleshooting workflow</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Best-fit environments</h3>
+            <div class="chip-row">
+              <span class="chip">Help desk teams</span>
+              <span class="chip">Managed services</span>
+              <span class="chip">Desktop support</span>
+              <span class="chip">IT operations</span>
+              <span class="chip">Customer-facing support</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Core Skills</div>
+            <h2>Support-ready fundamentals</h2>
+          </div>
+          <p>
+            The skill emphasis below keeps the focus on practical support work rather than broad theory,
+            making it easy for recruiters to see alignment with entry-level IT service roles.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <h3>End-User Support</h3>
+            <p>Assisting users with common technical issues, explaining steps clearly, and keeping communication calm and professional.</p>
+          </article>
+          <article class="card">
+            <h3>Hardware Troubleshooting</h3>
+            <p>Understanding core computer components and supporting first-level diagnosis of common hardware-related problems.</p>
+          </article>
+          <article class="card">
+            <h3>Network Basics</h3>
+            <p>Working knowledge of addressing, connectivity checks, and basic troubleshooting paths for network-related support tickets.</p>
+          </article>
+          <article class="card">
+            <h3>System & Cloud Awareness</h3>
+            <p>Exposure to broader IT systems concepts and cloud-related fundamentals that support stronger help desk escalation and context.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="certifications">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Certifications</div>
+            <h2>Training that supports technical support readiness</h2>
+          </div>
+          <p>
+            Each certification is linked directly from this separate portfolio folder so recruiters can open the source PDF without leaving the site structure.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card cert-card">
+            <div class="cert-top">
+              <div>
+                <h3>Databases</h3>
+                <p>Useful for support roles that interact with systems, records, back-office tools, and data-driven workflows.</p>
+              </div>
+              <div class="cert-badge">DB</div>
+            </div>
+            <a class="button" href="assets/docs/Databases.pdf" target="_blank" rel="noopener">Open Certificate</a>
+          </article>
+
+          <article class="card cert-card">
+            <div class="cert-top">
+              <div>
+                <h3>Certified Cloud System Analyst (CCSA)</h3>
+                <p>Supports a stronger understanding of cloud and system contexts that often connect to support, monitoring, and escalation work.</p>
+              </div>
+              <div class="cert-badge">CC</div>
+            </div>
+            <a class="button" href="assets/docs/Certified Cloud System Analyst (CCSA)-certificate.pdf" target="_blank" rel="noopener">Open Certificate</a>
+          </article>
+
+          <article class="card cert-card">
+            <div class="cert-top">
+              <div>
+                <h3>Network Addressing and Basic Troubleshooting</h3>
+                <p>Directly aligned with help desk tasks involving connectivity checks, addressing concepts, and first-response troubleshooting.</p>
+              </div>
+              <div class="cert-badge">NW</div>
+            </div>
+            <a class="button" href="assets/docs/NetworkAddressingandBasicTroubleshootingUpdate20260331-32-e9bi4z.pdf" target="_blank" rel="noopener">Open Certificate</a>
+          </article>
+
+          <article class="card cert-card">
+            <div class="cert-top">
+              <div>
+                <h3>Computer Hardware Basics</h3>
+                <p>Reinforces support capability for diagnosing basic workstation issues and understanding core computer components.</p>
+              </div>
+              <div class="cert-badge">HW</div>
+            </div>
+            <a class="button" href="assets/docs/ComputerHardwareBasicsUpdate20260331-32-cfw0t4.pdf" target="_blank" rel="noopener">Open Certificate</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="resume">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Resume</div>
+            <h2>Quick access for recruiters and hiring teams</h2>
+          </div>
+          <p>
+            The resume is bundled locally inside this separate portfolio so it can be downloaded or opened directly alongside the certification documents.
+          </p>
+        </div>
+
+        <div class="resume">
+          <article class="resume-card">
+            <h3>Ken Ayson Resume</h3>
+            <p>
+              A ready-to-share resume for Technical Support, Help Desk, and general entry-level IT support opportunities.
+              It complements the certification section by giving hiring teams a direct document reference.
+            </p>
+            <ul class="resume-points" style="margin-top: 1rem;">
+              <li>Targeted toward technical support and front-line IT assistance</li>
+              <li>Matches the troubleshooting, networking, and hardware focus shown above</li>
+              <li>Packaged within this separate folder for cleaner sharing and portability</li>
+            </ul>
+            <div class="resume-actions">
+              <a class="button" href="assets/docs/Ayson_Resume.pdf" target="_blank" rel="noopener">Open Resume</a>
+              <a class="button-ghost" href="assets/docs/Ayson_Resume.pdf" download>Download Resume</a>
+            </div>
+          </article>
+
+          <aside class="resume-card">
+            <h3>Why this profile fits help desk work</h3>
+            <ul class="support-list">
+              <li>Comfortable positioning around user support, triage, and basic issue resolution</li>
+              <li>Certification-backed readiness in hardware, networking, databases, and cloud systems</li>
+              <li>Strong fit for organizations hiring dependable entry-level support talent</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Contact</div>
+            <h2>Public contact section</h2>
+          </div>
+          <p>
+            This portfolio keeps the contact block intentionally light. Exact public email and city can be updated once you confirm the details you want visible online.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <article class="contact-card">
+            <span>Email</span>
+            <h3>Available on request</h3>
+            <p>Use the confirmed public email address here before publishing broadly.</p>
+          </article>
+          <article class="contact-card">
+            <span>City</span>
+            <h3>To be confirmed</h3>
+            <p>Add the preferred city-level location only, without exposing a full address.</p>
+          </article>
+          <article class="contact-card">
+            <span>Role Interest</span>
+            <h3>Technical Support / Help Desk</h3>
+            <p>Open to roles centered on user support, troubleshooting, service desk tasks, and IT operations assistance.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="shell">
+      Separate portfolio folder created for Ken Ayson. This page is self-contained and does not modify any existing personal portfolio files.
+    </div>
+  </footer>
+</body>
+</html>
